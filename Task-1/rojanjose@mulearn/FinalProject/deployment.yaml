@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalable-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: scalable-webapp
+  template:
+    metadata:
+      labels:
+        app: scalable-webapp
+    spec:
+      containers:
+      - name: scalable-webapp
+        image: mywebapp
+        imagePullPolicy: Never
+        env:
+        - name: STUDENT_NAME
+          value: "Rojan Jose"
+        ports:
+        - containerPort: 80
